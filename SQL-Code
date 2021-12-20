@@ -9,6 +9,21 @@ CREATE TABLE departments (
 	dept_name varchar
 );
 
+CREATE TABLE titles (
+	title_id varchar PRIMARY KEY,
+	title varchar
+);
+
+CREATE TABLE employees (
+	emp_id int PRIMARY KEY,
+	FOREIGN KEY (title_id) REFERENCES titles(title_id),
+	birth_date date,
+	first varchar,
+	last varchar,
+	sex varchar,
+	hire_date date
+);
+
 CREATE TABLE dept_emp (
 	FOREIGN KEY (emp_id) REFERENCES employees(emp_id),
 	FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
@@ -19,25 +34,12 @@ CREATE TABLE dept_manager (
 	FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
 );
 
-CREATE TABLE employes (
-	emp_id int PRIMARY KEY,
-	FOREIGN KEY (title_id) REFERENCES titles(title_id),
-	birth_date date,
-	first varchar,
-	last varchar,
-	sex varchar,
-	hire_date date
-);
-
 CREATE TABLE salaries (
 	FOREIGN KEY (emp_id) REFERENCES employees(emp_id),
 	salary int
 );
 
-CREATE TABLE titles (
-	FOREIGN KEY (title_id) REFERENCES employees(title_id),
-	title varchar
-);
+
 
 -- * Import each CSV file into the corresponding SQL table. **Note** be sure to import the data in the same order that the tables were created and account for the headers when importing to avoid errors.
 

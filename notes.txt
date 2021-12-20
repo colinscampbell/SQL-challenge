@@ -1,0 +1,37 @@
+quickdbd text
+
+departments
+-
+dept_id varchar pk
+dept_name varchar
+
+
+dept_emp
+-
+emp_id int FK >- employees.emp_id
+dept_id varchar FK >- departments.dept_id
+
+dept_manager
+-
+emp_id int FK >- employees.emp_id
+dept_id varchar FK >- departments.dept_id
+
+employees
+-
+emp_id int FK >- salaries.emp_id
+title_id FK >- titles.title_id
+birth_date date
+first varchar
+last varchar
+sex varchar
+hire_date date
+
+salaries
+-
+emp_id int pk
+salary int
+
+titles
+-
+title_id varchar pk
+title varchar

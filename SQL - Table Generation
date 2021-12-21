@@ -1,0 +1,42 @@
+-- #### Data Engineering
+
+CREATE TABLE departments (
+	dept_id varchar PRIMARY KEY,
+	dept_name varchar
+);
+
+CREATE TABLE titles (
+	title_id varchar PRIMARY KEY,
+	title varchar
+);
+
+CREATE TABLE employees (
+	emp_id int PRIMARY KEY,
+	title_id varchar,
+	FOREIGN KEY (title_id) REFERENCES titles(title_id),
+	birth_date date,
+	first varchar,
+	last varchar,
+	sex varchar,
+	hire_date date
+);
+
+CREATE TABLE dept_emp (
+	emp_id int,
+	dept_id varchar,
+	FOREIGN KEY (emp_id) REFERENCES employees(emp_id),
+	FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);
+
+CREATE TABLE dept_manager (
+	dept_id varchar,
+	emp_id int,
+	FOREIGN KEY (emp_id) REFERENCES employees(emp_id),
+	FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);
+
+CREATE TABLE salaries (
+	emp_id int,
+	FOREIGN KEY (emp_id) REFERENCES employees(emp_id),
+	salary int
+);

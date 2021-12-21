@@ -1,5 +1,3 @@
-quickdbd text
-
 departments
 -
 dept_id varchar pk
@@ -18,8 +16,8 @@ dept_id varchar FK >- departments.dept_id
 
 employees
 -
-emp_id int FK >- salaries.emp_id
-title_id FK >- titles.title_id
+emp_id int pk
+title_id varchar FK >- titles.title_id
 birth_date date
 first varchar
 last varchar
@@ -28,7 +26,7 @@ hire_date date
 
 salaries
 -
-emp_id int pk
+emp_id int FK >- employees.emp_id
 salary int
 
 titles
